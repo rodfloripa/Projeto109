@@ -1,4 +1,3 @@
----
 
 <p align="justify"><h1>Projeto109: Treinamento Distribuído de Modelos de Machine Learning com Ray</h1></p>
 
