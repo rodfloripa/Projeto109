@@ -53,11 +53,11 @@
 
 <p align="justify">Na execução do pipeline distribuído, a alocação paralela reduziu o tempo total de treinamento de 10 modelos XGBoost com sobreamostragem por SMOTE para apenas <b>4.83 segundos</b>[cite: 4], alcançando excelente poder preditivo:</p>
 
-* <p align="justify"><b>Tempo Total de Execução (Ray):</b> 4.83s[cite: 4]</p>
-* <p align="justify"><b>F1-Score do Ensemble:</b> 0.9062[cite: 4]</p>
-* <p align="justify"><b>PR AUC (Área sob a Curva Precision-Recall):</b> 0.9767[cite: 4]</p>
-* <p align="justify"><b>Precisão (Classe 1):</b> 0.95[cite: 4]</p>
-* <p align="justify"><b>Recall (Classe 1):</b> 0.87[cite: 4]</p>
+* <p align="justify"><b>Tempo Total de Execução (Ray):</b> 4.83s</p>
+* <p align="justify"><b>F1-Score do Ensemble:</b> 0.9062</p>
+* <p align="justify"><b>PR AUC (Área sob a Curva Precision-Recall):</b> 0.9767</p>
+* <p align="justify"><b>Precisão (Classe 1):</b> 0.95</p>
+* <p align="justify"><b>Recall (Classe 1):</b> 0.87</p>
 
 <p align="justify"><h3>Conclusão</h3></p>
 
