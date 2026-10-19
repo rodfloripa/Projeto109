@@ -1,4 +1,4 @@
-<p align="justify"><h1>Projeto109: Treinamento Distribuído de Modelos de Machine Learning com Ray</h1></p>
+<p align="justify"><h1> Treinamento Distribuído de Modelos de Machine Learning com Ray</h1></p>
 
 <p align="justify">Este documento apresenta uma análise detalhada sobre as vantagens do uso do framework <b>Ray</b> para o treinamento distribuído e otimização de modelos de Machine Learning (como XGBoost e ensembles com balanceamento por SMOTE). Além disso, é apresentada a explicação completa de cada bloco de código utilizado para inicialização, compartilhamento de memória em tempo de execução, execução remota paralela e avaliação de métricas de desempenho.</p>
 
