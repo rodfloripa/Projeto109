@@ -1,4 +1,3 @@
-
 <p align="justify"><h1>Projeto109: Treinamento Distribuído de Modelos de Machine Learning com Ray</h1></p>
 
 <p align="justify">Este documento apresenta uma análise detalhada sobre as vantagens do uso do framework <b>Ray</b> para o treinamento distribuído e otimização de modelos de Machine Learning (como XGBoost e ensembles com balanceamento por SMOTE). Além disso, é apresentada a explicação completa de cada bloco de código utilizado para inicialização, compartilhamento de memória em tempo de execução, execução remota paralela e avaliação de métricas de desempenho.</p>
@@ -51,7 +50,7 @@
 
 <p align="justify"><h3>3. Resultados e Métricas de Desempenho</h3></p>
 
-<p align="justify">Na execução do pipeline distribuído, a alocação paralela reduziu o tempo total de treinamento de 10 modelos XGBoost com sobreamostragem por SMOTE para apenas <b>4.83 segundos</b>[cite: 4], alcançando excelente poder preditivo:</p>
+<p align="justify">Na execução do pipeline distribuído, a alocação paralela reduziu o tempo total de treinamento de 10 modelos XGBoost com sobreamostragem por SMOTE para apenas <b>4.83 segundos</b>, alcançando excelente poder preditivo:</p>
 
 * <p align="justify"><b>Tempo Total de Execução (Ray):</b> 4.83s</p>
 * <p align="justify"><b>F1-Score do Ensemble:</b> 0.9062</p>
@@ -59,8 +58,26 @@
 * <p align="justify"><b>Precisão (Classe 1):</b> 0.95</p>
 * <p align="justify"><b>Recall (Classe 1):</b> 0.87</p>
 
+<p align="justify"><h3>4. Comparativo: Ray vs. Apache Spark no Treinamento de Machine Learning</h3></p>
+
+<p align="justify">Embora ambos sejam frameworks voltados para processamento distribuído, eles nasceram com filosofias e arquiteturas distintas. O Spark foi desenhado originalmente para processamento de dados em lote (<i>batch processing</i>) em grande escala (ETL e SQL), enquanto o Ray foi construído do zero para lidar com cargas de trabalho intensivas de <b>Inteligência Artificial, aprendizado por reforço e aprendizado de máquina distribuído</b>.</p>
+
+* <p align="justify"><b>Arquitetura e Granularidade de Tarefas:</b> O Ray utiliza uma arquitetura baseada em tarefas dinâmicas (<i>Tasks</i>) e atores (<i>Actors</i>) com baixo <i>overhead</i>, sendo ideal para computação fina e assíncrona (como rodar loops complexos e treinar múltiplos modelos independentes em paralelo). O Spark baseia-se em grafos DAG voltados para transformações em DataFrames (RDDs), sendo excelente para pipelines tabulares tradicionais, mas sofrendo com iterações complexas ou loops customizados de ML.</p>
+* <p align="justify"><b>Gerenciamento de Memória (Zero-Copy vs. Serialização):</b> O Ray utiliza o <i>Plasma Object Store</i> para compartilhamento de memória <i>zero-copy</i>, permitindo que os workers acessem grandes datasets diretamente sem duplicação ou serialização pesada por <i>pickle</i>. No Spark, operações iterativas de ML frequentemente exigem serialização e desserialização constante entre os nós.</p>
+* <p align="justify"><b>Integração com Ecossistemas de IA:</b> O Ray integra-se nativamente com PyTorch, Hugging Face, XGBoost e Scikit-Learn através de subprojetos como <i>Ray Train</i> e <i>Ray Tune</i>. O Spark utiliza o Spark MLlib com algoritmos próprios, exigindo pontes complexas para rodar bibliotecas externas de aprendizado de máquina ou Deep Learning.</p>
+
+<p align="center">
+<b>Tabela Resumo: Ray vs. Apache Spark (MLlib)</b>
+</p>
+
+| Critério | Ray | Apache Spark (MLlib) |
+| :--- | :--- | :--- |
+| **Foco Principal** | Computação geral em IA, RL, ensembles e pipelines customizados. | Processamento de Big Data (ETL, SQL) e ML tabular padrão. |
+| **Granularidade** | Tarefas finas, assíncronas e Atores com estado. | Operações em lote baseadas em RDDs e DataFrames. |
+| **Gerenciamento de Dados** | Object Store compartilhado (Zero-Copy via Apache Arrow). | Particionamento distribuído em memória com serialização. |
+| **Flexibilidade de Código** | Alta (transforma qualquer código Python em distribuído). | Média/Baixa (exige o uso da API específica do Spark MLlib). |
+| **Cenário Ideal** | Hiperparametrização, ensembles paralelos e Deep Learning. | Grandes volumes de dados tabulares para limpeza e modelos lineares/árvores. |
+
 <p align="justify"><h3>Conclusão</h3></p>
 
-<p align="justify">A utilização do <b>Ray</b> para pipelines de Machine Learning elimina gargalos de processamento ao transformar tarefas pesadas e repetitivas em execuções distribuídas eficientes. O uso combinado de tarefas remotas assíncronas com o armazenamento de memória de cópia zero (<i>Object Store</i>) proporciona ganhos expressivos de velocidade, escalabilidade e produtividade em ambientes de Ciência de Dados.</p>
-
----
+<p align="justify">A utilização do <b>Ray</b> para pipelines de Machine Learning elimina gargalos de processamento ao transformar tarefas pesadas e repetitivas em execuções distribuídas eficientes. O uso combinado de tarefas remotas assíncronas com o armazenamento de memória de cópia zero (<i>Object Store</i>) proporciona ganhos expressivos de velocidade, escalabilidade e produtividade, superando as limitações de frameworks tradicionais baseados em lotes para cenários complexos de modelagem e experimentação.</p>
