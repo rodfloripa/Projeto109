@@ -78,6 +78,6 @@
 | **Flexibilidade de Código** | Alta (transforma qualquer código Python em distribuído). | Média/Baixa (exige o uso da API específica do Spark MLlib). |
 | **Cenário Ideal** | Hiperparametrização, ensembles paralelos e Deep Learning. | Grandes volumes de dados tabulares para limpeza e modelos lineares/árvores. |
 
-<p align="justify"><h3>Conclusão</h3></p>
+<p align="justify"><h3>5. Conclusão</h3></p>
 
 <p align="justify">A utilização do <b>Ray</b> para pipelines de Machine Learning elimina gargalos de processamento ao transformar tarefas pesadas e repetitivas em execuções distribuídas eficientes. O uso combinado de tarefas remotas assíncronas com o armazenamento de memória de cópia zero (<i>Object Store</i>) proporciona ganhos expressivos de velocidade, escalabilidade e produtividade, superando as limitações de frameworks tradicionais baseados em lotes para cenários complexos de modelagem e experimentação.</p>
